@@ -1,0 +1,13 @@
+/.idea
+.vs
+*.xml
+*.json
+*.dll
+*.pdb
+*.props
+*.targets
+*.cache
+*.txt
+*.info
+bin
+obj
