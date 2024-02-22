@@ -7,6 +7,11 @@ public class Person
     private string name;
     private int age;
     private string address;
+    private List<string> telephones = new List<string>();
+
+    public Person()
+    {
+    }
 
     public Person(int id, string name, int age, string address)
     {
@@ -16,11 +21,24 @@ public class Person
         this.address = address;
     }
 
+    // indexer
+    public string this[int index]
+    {
+        get => telephones[index];
+        set => telephones[index] = value;
+    }
+    
+    public List<string> Telephones
+    {
+        get => telephones;
+        set => telephones = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
     // property
     public int Id
     {
         get { return id; }
-        set { id = value; }
+        set { id = value>0?value:1; }
     }
 
     public string Name
@@ -45,5 +63,15 @@ public class Person
     public void ShowInfo()
     {
         Console.WriteLine(id+"-"+name+"-"+age+"-"+address);
+    }
+
+    public string ShowInfo(string key)
+    {
+        return "Hello";
+    }
+
+    public virtual void Run()
+    {
+        Console.WriteLine("Run....");
     }
 }
