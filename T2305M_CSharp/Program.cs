@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using T2305M_CSharp.Session1;
+using T2305M_CSharp.Session2;
 
 Console.WriteLine("Hello, World!");
 Person person = new Person(1,"Anh Vu",18,"HN");
