@@ -1,13 +1,50 @@
-﻿using T2305M_CSharp.Session3;
-static void DisplayHello(string str)
+﻿
+using T2305M_CSharp.Session1;
+// 
+Person p = new Person();
+p.Id = 1;
+new Thread(() =>
 {
-    Console.WriteLine("Hello: "+str);
-}
-DemoDelegate dd = new DemoDelegate();
+    for (int i = 0; i < 20; i++)
+    {
+        try
+        {
+            lock (p)
+            {
+                p.Id = p.Id + 1;
+                p.ShowInfo();
+            }
+            Thread.Sleep(1000);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+}).Start();
+new Thread(() =>
+{
+    for (int i = 0; i < 20; i++)
+    {
+        try
+        {
+            lock (p)
+            {
+                p.Id = p.Id + 1;
+                p.ShowInfo();
+            }
+            Thread.Sleep(1000);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+}).Start();
 
-PrintMessage pm = new PrintMessage(DisplayHello);
-pm += dd.ShowInfo;
-pm += new DemoDelegate().ShowInfo;
-pm("Nguyen Van An");
-
-Button login = new Button("Login",DisplayHello);
+// async Task<int> DemoAsync()
+// {
+//     
+// }
